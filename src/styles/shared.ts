@@ -87,9 +87,9 @@ export const SiteHeaderContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10vw 4vw;
-  min-height: 200px;
-  max-height: 450px;
+  padding: 6vw 4vw;
+  min-height: 180px;
+  max-height: 380px;
   text-align: center;
 `;
 
