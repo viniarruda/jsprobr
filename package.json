@@ -1,10 +1,9 @@
 {
-  "name": "gatsby-casper",
-  "description": "Casper for gatsby",
+  "name": "jspro",
+  "description": "Um blog sobre javascript",
   "version": "0.0.0",
   "private": true,
-  "author": "Scott Cooper <scttcper@gmail.com>",
-  "license": "MIT",
+  "author": "Andre Dutra <adoliveira@pm.me>",
   "scripts": {
     "build": "gatsby build",
     "clean": "rimraf public",
