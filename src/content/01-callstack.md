@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Entenda de uma vez por todas a pilha de chamas (Callstack) do JavaScript
+title: Entenda de uma vez por todas a pilha de chamadas (Callstack) do JavaScript
 image: img/pilha-chamadas.jpg
 author: Andre
 permalink: callstack-entenda-pilha-chamadas-javascript
