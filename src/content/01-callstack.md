@@ -10,7 +10,7 @@ tags:
 draft: false
 ---
 
-A pilha de chamadas ( call stack ) é o mecanismo que os interpretadores de linguagens de programção utilizando para salvar as funções na memória de uma maneira que as multiplas funções do programa sejam executadas corretamenta.
+A pilha de chamadas ( callstack ) é o mecanismo que os interpretadores de linguagens de programção utilizando para salvar as funções na memória de uma maneira que as multiplas funções do programa sejam executadas corretamenta.
 
 Este é o primeiro artigo da série 33 conceitos de JavaScript que todo desenvolvedor deveria conhecer, basedo [neste projeto](https://github.com/leonardomso/33-js-concepts).
 
@@ -18,14 +18,14 @@ Este é o primeiro artigo da série 33 conceitos de JavaScript que todo desenvol
 
 ## O que é a pilha de chamadas
 
-A pilha de chamadas é maneira como o compilador do JavaScript organiza as múltiplas funções que seram executadas em um programa, sempre que uma função é chamada ela é adicionada a pilha na ordem LIFO(Last in, first out), e uma vez que ela é totalmente executada ele é removida da pilha e o código continua a ser executado de onde parou.
+A pilha de chamadas é maneira como o compilador do JavaScript organiza as múltiplas funções que seram executadas em um programa, sempre que uma função é chamada ela é adicionada a pilha no topo da pilha e executada na ordem LIFO(Last In, First Out), e uma vez que a função é totalmente executada ele é removida da pilha e o código continua a ser executado de onde parou.
 
 Se uma pilha de chamadas fica muito grande (isso acontece facilmente se fizer uma função recursiva errada.) o compilador gera o erro "stack overflow".
 
 ## Exemplos
 
 ```javascript
-function greeting() {
+function bemVindo() {
   // [1]  Código executado antes da função digaOla
   digaOla();
   // [2] *Continua executando
