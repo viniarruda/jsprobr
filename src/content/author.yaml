@@ -1,10 +1,10 @@
-- id: Ghost
+- id: Andre
   avatar: avatars/ghost.png
-  bio: The professional publishing platform
-  twitter: TryGhost
-  facebook: ghost
-  website: https://ghost.org/
-  location: On a plane
+  bio: Fullstack developer, atualmente trabalhando na Avec Brasil no desenvolvimento de microservices utilizando Node.js, TypeScript, Nestjs, Docker entre outras coisas.
+  twitter: andrdtr
+  facebook: akadecao  
+  website: https://andre.blog.br/
+  location: São Paulo, SP
 - id: Another Author
   avatar: avatars/ghost.png
   bio: This is another test author with a profile background image
