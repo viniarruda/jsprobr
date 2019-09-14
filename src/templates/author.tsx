@@ -96,6 +96,7 @@ interface AuthorTemplateProps {
       twitter?: string;
       facebook?: string;
       location?: string;
+      name?: string;
       // eslint-disable-next-line @typescript-eslint/camelcase
       profile_image?: {
         childImageSharp: {
@@ -115,13 +116,10 @@ interface AuthorTemplateProps {
 const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
   const author = props.data.authorYaml;
 
-  const edges = props.data.allMarkdownRemark.edges.filter(
-    edge => {
-      const isDraft = (edge.node.frontmatter.draft !== true ||
-        process.env.NODE_ENV === 'development');
-      return isDraft && edge.node.frontmatter.author && edge.node.frontmatter.author.id === author.id;
-    }
-  );
+  const edges = props.data.allMarkdownRemark.edges.filter(edge => {
+    const isDraft = edge.node.frontmatter.draft !== true || process.env.NODE_ENV === 'development';
+    return isDraft && edge.node.frontmatter.author && edge.node.frontmatter.author.id === author.id;
+  });
   const totalCount = edges.length;
 
   return (
@@ -129,17 +127,17 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
       <Helmet>
         <html lang={config.lang} />
         <title>
-          {author.id} - {config.title}
+          {author.name} - {config.title}
         </title>
         <meta name="description" content={author.bio} />
         <meta property="og:site_name" content={config.title} />
         <meta property="og:type" content="profile" />
-        <meta property="og:title" content={`${author.id} - ${config.title}`} />
+        <meta property="og:title" content={`${author.name} - ${config.title}`} />
         <meta property="og:url" content={config.siteUrl + props.pathContext.slug} />
         <meta property="article:publisher" content="https://www.facebook.com/ghost" />
         <meta property="article:author" content="https://www.facebook.com/ghost" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content={`${author.id} - ${config.title}`} />
+        <meta name="twitter:title" content={`${author.name} - ${config.title}`} />
         <meta name="twitter:url" content={config.siteUrl + props.pathContext.slug} />
         {config.twitter && (
           <meta
@@ -160,9 +158,9 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
           css={[outer, SiteHeader]}
           style={{
             // eslint-disable-next-line @typescript-eslint/camelcase
-            backgroundImage: author.profile_image ?
-              `url(${author.profile_image.childImageSharp.fluid.src})` :
-              '',
+            backgroundImage: author.profile_image
+              ? `url(${author.profile_image.childImageSharp.fluid.src})`
+              : '',
           }}
         >
           <div css={inner}>
@@ -173,7 +171,7 @@ const Author: React.FunctionComponent<AuthorTemplateProps> = props => {
                 src={props.data.authorYaml.avatar.childImageSharp.fluid.src}
                 alt={author.id}
               />
-              <SiteTitle>{author.id}</SiteTitle>
+              <SiteTitle>{author.name}</SiteTitle>
               {author.bio && <AuthorBio>{author.bio}</AuthorBio>}
               <AuthorMeta>
                 {author.location && (
@@ -268,6 +266,7 @@ export const pageQuery = graphql`
       website
       twitter
       bio
+      name
       facebook
       location
       profile_image {
@@ -286,9 +285,9 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { frontmatter: { draft: { ne: true } } },
-      sort: { fields: [frontmatter___date], order: DESC },
-      limit: 2000,
+      filter: { frontmatter: { draft: { ne: true } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 2000
     ) {
       edges {
         node {
