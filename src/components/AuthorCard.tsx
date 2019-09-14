@@ -45,13 +45,13 @@ const AuthorCard: React.FunctionComponent<AuthorCardProps> = ({ author }) => {
       <img css={AuthorProfileImage} src={author.avatar.children[0].fixed.src} alt={author.id} />
       <AuthorCardContent>
         <AuthorCardName>
-          <Link to={`/author/${_.kebabCase(author.id)}/`}>{author.id}</Link>
+          <Link to={`/author/${_.kebabCase(author.id)}/`}>{author.name}</Link>
         </AuthorCardName>
         {author.bio ? (
           <p>{author.bio}</p>
         ) : (
           <p>
-            Read <Link to={`/author/${_.kebabCase(author.id)}/`}>more posts</Link> by this author.
+            Leia <Link to={`/author/${_.kebabCase(author.id)}/`}>mais artigos</Link> deste autor.
           </p>
         )}
       </AuthorCardContent>
